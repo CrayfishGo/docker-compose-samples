@@ -1,0 +1,36 @@
+version: '2'
+services:
+  jira-mysql-db:
+    restart: always
+    image: mysql:5.6
+    hostname: jira-mysql-db
+    volumes:
+      - /home/o2otest/dockerData/jira-mysql-db:/var/lib/mysql
+      - /etc/localtime:/etc/localtime
+    environment:
+      MYSQL_ROOT_PASSWORD: Vcredit_jira
+      MYSQL_DATABASE: jira
+      MYSQL_USER: jira
+      MYSQL_PASSWORD: jira
+      --character-set-server: utf8mb4
+    ports:
+      - 3309:3306
+    container_name: jira-mysql-db
+    mem_limit: 3g
+  jira-server:
+    restart: always
+    image: idoall/jira
+    hostname: jira-server
+    volumes:
+      - /home/o2otest/dockerData/jira-data:/tmp
+      - /etc/localtime:/etc/localtime
+    links:
+      - jira-mysql-db
+    ports:
+      - "20011:8085"
+      - "20012:8080"
+      - "20013:8443"
+      - "20014:8090"
+      - "20015:22"
+    container_name: jira-server
+    mem_limit: 3g

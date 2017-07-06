@@ -1,0 +1,13 @@
+version: '2'
+services:
+ redis:
+   restart: always
+   build: .
+   image: registry.vcredit.com/o2o/redis
+   volumes:
+   - /home/o2odev/dockerData/o2o-redis/data:/data
+   - /etc/localtime:/etc/localtime
+   ports:
+   - 6379:6379
+   container_name: o2o-redis
+   mem_limit: 2g

@@ -1,0 +1,12 @@
+version: '2'
+services:
+ portainer:
+   restart: always
+   image: portainer/portainer
+   volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+   - /etc/localtime:/etc/localtime
+   ports:
+   - 9999:9000
+   container_name: portainer
+   mem_limit: 3g

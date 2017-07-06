@@ -1,0 +1,51 @@
+version: '2'
+services:
+  rabbit-server-1:
+    restart: always
+    image: registry.vcredit.com/o2o/rabbit-cluster
+    hostname: rabbit-server-1
+    environment:
+      - ERLANG_COOKIE=abcdefg
+    volumes:
+       - /home/o2odev/dockerData/rabbitMQ/rabbit-server1:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    container_name: rabbit-server-1
+    mem_limit: 4g
+
+  rabbit-server-2:
+    restart: always
+    image: registry.vcredit.com/o2o/rabbit-cluster
+    hostname: rabbit-server-2
+    links:
+      - rabbit-server-1
+    environment:
+      - ERLANG_COOKIE=abcdefg
+      - CLUSTER_WITH=rabbit-server-1
+      - ENABLE_RAM=true
+    volumes:
+      - /home/o2odev/dockerData/rabbitMQ/rabbit-server2:/var/lib/rabbitmq
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+    container_name: rabbit-server-2
+    mem_limit: 4g
+
+  rabbit-server-3:
+    restart: always
+    image: registry.vcredit.com/o2o/rabbit-cluster
+    hostname: rabbit-server-3
+    links:
+      - rabbit-server-1
+    environment:
+      - ERLANG_COOKIE=abcdefg
+      - CLUSTER_WITH=rabbit-server-1
+      - ENABLE_RAM=true
+    volumes:
+      - /home/o2odev/dockerData/rabbitMQ/rabbit-server3:/var/lib/rabbitmq
+    ports:
+      - "5674:5672"
+      - "15674:15672"
+    container_name: rabbit-server-3
+    mem_limit: 4g

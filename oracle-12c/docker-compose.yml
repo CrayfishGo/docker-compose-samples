@@ -1,0 +1,15 @@
+version: '2'
+services:
+ oracle-12c:
+   restart: always
+   image: sath89/oracle-12c
+   volumes:
+   - /home/o2otest/dockerData/oracle-12c/data:/u01/app/oracle
+   - /etc/localtime:/etc/localtime
+   environment:
+    DBCA_TOTAL_MEMORY: 2048
+   ports:
+    - "9090:8080"
+    - "1521:1521"
+   container_name: oracle-12c
+   mem_limit: 4g

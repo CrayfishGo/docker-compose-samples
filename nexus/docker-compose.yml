@@ -1,0 +1,11 @@
+version: '2' 
+services: 
+ nexus:
+   restart: always
+   image: registry.vcredit.com/o2o/nexus:latest
+   volumes:
+   - /home/o2odev/dockerData/o2o-nexus:/sonatype-work
+   ports:
+   - 8888:8081
+   container_name: o2o-nexus
+   mem_limit: 2g

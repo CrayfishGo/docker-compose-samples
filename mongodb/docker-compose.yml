@@ -1,0 +1,13 @@
+version: '2'
+services:
+ mongodb:
+   restart: always
+   image: daocloud.io/library/mongo:3.2.4
+   volumes:
+   - /home/o2odev/dockerData/o2o-mongodb:/data/db
+   - /etc/localtime:/etc/localtime
+   ports:
+   - 27017:27017
+   command: [--auth]
+   container_name: ddk-mongodb
+   mem_limit: 4g

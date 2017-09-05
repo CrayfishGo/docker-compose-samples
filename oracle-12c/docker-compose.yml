@@ -4,7 +4,7 @@ services:
    restart: always
    image: sath89/oracle-12c
    volumes:
-   - /home/o2otest/dockerData/oracle-12c/data:/u01/app/oracle
+   - /data/dockerData/oracle-12c/data:/u01/app/oracle
    - /etc/localtime:/etc/localtime
    environment:
     DBCA_TOTAL_MEMORY: 2048

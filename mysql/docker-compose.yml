@@ -8,7 +8,7 @@ services:
    - /data/dockerData/mysql/data:/var/lib/mysql
    - /etc/localtime:/etc/localtime
    environment:
-    MYSQL_ROOT_PASSWORD: vcredit_o2o(Mysql)
+    MYSQL_ROOT_PASSWORD: evan1120
     --character-set-server: utf8mb4
    ports:
    - 3308:3306

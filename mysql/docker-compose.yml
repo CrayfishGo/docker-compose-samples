@@ -10,6 +10,7 @@ services:
    environment:
     MYSQL_ROOT_PASSWORD: evan1120
     --character-set-server: utf8mb4
+    --collation-server: utf8mb4_unicode_ci
    ports:
    - 3308:3306
    container_name: mysql

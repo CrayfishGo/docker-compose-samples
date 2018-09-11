@@ -5,7 +5,7 @@ services:
    build: .
    image: evan1120/redis
    volumes:
-   - /data/dockerData/redis/data:/data
+   - ~/dockerData/redis/data:/data
    - /etc/localtime:/etc/localtime
    ports:
    - 6379:6379

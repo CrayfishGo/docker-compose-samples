@@ -7,10 +7,9 @@ services:
    volumes:
    - /data/dockerData/mysql/data:/var/lib/mysql
    - /etc/localtime:/etc/localtime
+   command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
    environment:
-    MYSQL_ROOT_PASSWORD: evan1120
-    --character-set-server: utf8mb4
-    --collation-server: utf8mb4_unicode_ci
+    MYSQL_ROOT_PASSWORD: admin
    ports:
    - 3308:3306
    container_name: mysql

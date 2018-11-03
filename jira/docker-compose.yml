@@ -5,14 +5,14 @@ services:
     image: mysql:5.6
     hostname: jira-mysql-db
     volumes:
-      - /home/o2otest/dockerData/jira-mysql-db:/var/lib/mysql
+      - ~/dockerData/jira-mysql-db:/var/lib/mysql
       - /etc/localtime:/etc/localtime
+    command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
     environment:
-      MYSQL_ROOT_PASSWORD: Vcredit_jira
+      MYSQL_ROOT_PASSWORD: jira123!!
       MYSQL_DATABASE: jira
       MYSQL_USER: jira
       MYSQL_PASSWORD: jira
-      --character-set-server: utf8mb4
     ports:
       - 3309:3306
     container_name: jira-mysql-db
@@ -22,7 +22,7 @@ services:
     image: idoall/jira
     hostname: jira-server
     volumes:
-      - /home/o2otest/dockerData/jira-data:/tmp
+      - ~/dockerData/jira-data:/tmp
       - /etc/localtime:/etc/localtime
     links:
       - jira-mysql-db

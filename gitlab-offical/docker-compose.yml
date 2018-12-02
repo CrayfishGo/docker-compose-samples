@@ -3,18 +3,19 @@ services:
   gitlab-ce:
     image: 'gitlab/gitlab-ce:latest'
     restart: always
-    hostname: 'gitlab.ags.com'
+    hostname: 'gitlab.evan.com'
     container_name: gitlab-ce
     ports:
     - '9090:9090'
     - '2224:22'
     volumes:
-    - '/srv/gitlab/config:/etc/gitlab'
-    - '/srv/gitlab/logs:/var/log/gitlab'
-    - '/srv/gitlab/data:/var/opt/gitlab'
+    - '/Users/evan/dockerData/gitlab/config:/etc/gitlab'
+    - '/Users/evan/dockerData/gitlab/logs:/var/log/gitlab'
+    - '/Users/evan/dockerData/gitlab/data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.ags.com:9090'
+        external_url 'http://gitlab-evan.com:9090'
+        gitlab_rails['gitlab_host'] = "gitlab-evan.com"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
         gitlab_rails['smtp_enable'] = true
         gitlab_rails['smtp_enable'] = true

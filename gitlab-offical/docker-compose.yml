@@ -14,18 +14,19 @@ services:
     - '/Users/evan/dockerData/gitlab/data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab-evan.com:9090'
-        gitlab_rails['gitlab_host'] = "gitlab-evan.com"
+        external_url 'http://gitlab.evan.com:9090'
+        gitlab_rails['gitlab_host'] = "gitlab.evan.com"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        gitlab_rails['gitlab_email_enabled'] = true
+        gitlab_rails['gitlab_email_from'] = 'git@example.com'
+        gitlab_rails['gitlab_email_display_name'] = 'Gitlab'
         gitlab_rails['smtp_enable'] = true
-        gitlab_rails['smtp_enable'] = true
-        gitlab_rails['smtp_address'] = "smtp.server"
-        gitlab_rails['smtp_port'] = 465
-        gitlab_rails['smtp_user_name'] = "smtp user"
-        gitlab_rails['smtp_password'] = "smtp password"
-        gitlab_rails['smtp_domain'] = "example.com"
+        gitlab_rails['smtp_address'] = "smtp.server.com"
+        gitlab_rails['smtp_port'] = 25
+        gitlab_rails['smtp_user_name'] = "git@example.com"
+        gitlab_rails['smtp_password'] = "password"
+        gitlab_rails['smtp_domain'] = "exampleßßß.com"
         gitlab_rails['smtp_authentication'] = "login"
         gitlab_rails['smtp_enable_starttls_auto'] = true
-        gitlab_rails['smtp_openssl_verify_mode'] = 'peer'
-        gitlab_rails['gitlab_email_from'] = 'gitlab@example.com'
+        gitlab_rails['smtp_openssl_verify_mode'] = 'none'
         gitlab_rails['gitlab_email_reply_to'] = 'noreply@example.com'

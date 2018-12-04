@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jenkins:
+    restart: always
+    image: 'jenkinsci/blueocean'
+    hostname: 'jenkins'
+    container_name: jenkins
+    ports:
+    - '8088:8080'
+    - '50000:50000'
+    volumes:
+    - '/Users/evan/dockerData/jenkins-data:/var/jenkins_home'
+    - '/var/run/docker.sock:/var/run/docker.sock'
+    user: root

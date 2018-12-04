@@ -14,8 +14,8 @@ services:
     - '/Users/evan/dockerData/gitlab/data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.evan.com:9090'
-        gitlab_rails['gitlab_host'] = "gitlab.evan.com"
+        external_url 'http://gitlab-evan.com:9090'
+        gitlab_rails['gitlab_host'] = "gitlab-evan.com"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
         gitlab_rails['gitlab_email_enabled'] = true
         gitlab_rails['gitlab_email_from'] = 'git@example.com'

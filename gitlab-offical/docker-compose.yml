@@ -1,17 +1,18 @@
 version: '3'
 services:
-  gitlab-ce:
-    image: 'gitlab/gitlab-ce:latest'
+  gitlab-ee:
+    image: 'gitlab/gitlab-ee:latest'
     restart: always
     hostname: 'gitlab.evan.com'
-    container_name: gitlab-ce
+    container_name: gitlab-ee
     ports:
-    - '9090:9090'
-    - '2224:22'
+      - '9090:9090'
+      - '2224:22'
+      - '443:443'
     volumes:
-    - '/Users/evan/dockerData/gitlab/config:/etc/gitlab'
-    - '/Users/evan/dockerData/gitlab/logs:/var/log/gitlab'
-    - '/Users/evan/dockerData/gitlab/data:/var/opt/gitlab'
+      - '/Users/evan/dockerData/gitlab-ee/config:/etc/gitlab'
+      - '/Users/evan/dockerData/gitlab-ee/logs:/var/log/gitlab'
+      - '/Users/evan/dockerData/gitlab-ee/data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://gitlab-evan.com:9090'
@@ -25,7 +26,7 @@ services:
         gitlab_rails['smtp_port'] = 25
         gitlab_rails['smtp_user_name'] = "git@example.com"
         gitlab_rails['smtp_password'] = "password"
-        gitlab_rails['smtp_domain'] = "exampleßßß.com"
+        gitlab_rails['smtp_domain'] = "example.com"
         gitlab_rails['smtp_authentication'] = "login"
         gitlab_rails['smtp_enable_starttls_auto'] = true
         gitlab_rails['smtp_openssl_verify_mode'] = 'none'

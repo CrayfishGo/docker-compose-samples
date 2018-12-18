@@ -3,21 +3,22 @@ services:
   gitlab-ee:
     image: 'gitlab/gitlab-ee:latest'
     restart: always
-    hostname: 'gitlab.evan.com'
+    hostname: 'gitlab'
     container_name: gitlab-ee
     ports:
       - '9090:9090'
       - '2224:22'
       - '443:443'
     volumes:
-      - '/Users/evan/dockerData/gitlab-ee/config:/etc/gitlab'
-      - '/Users/evan/dockerData/gitlab-ee/logs:/var/log/gitlab'
-      - '/Users/evan/dockerData/gitlab-ee/data:/var/opt/gitlab'
+      - '~/dockerData/gitlab-ee/config:/etc/gitlab'
+      - '~/dockerData/gitlab-ee/logs:/var/log/gitlab'
+      - '~/dockerData/gitlab-ee/data:/var/opt/gitlab'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab-evan.com:9090'
-        gitlab_rails['gitlab_host'] = "gitlab-evan.com"
+        external_url 'http://myGitlab.com:9090'
+        gitlab_rails['gitlab_host'] = "myGitlab.com"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        gitlab_rails['gitlab_default_can_create_group'] = false
         gitlab_rails['gitlab_email_enabled'] = true
         gitlab_rails['gitlab_email_from'] = 'git@example.com'
         gitlab_rails['gitlab_email_display_name'] = 'Gitlab'

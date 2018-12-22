@@ -7,9 +7,9 @@ services:
    volumes:
    - /data/dockerData/mysql-master/data:/var/lib/mysql
    - /etc/localtime:/etc/localtime
+   command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
    environment:
-    MYSQL_ROOT_PASSWORD: evan1120
-    --character-set-server: utf8mb4
+    MYSQL_ROOT_PASSWORD: 123456
    ports:
    - 3307:3306
    container_name: mysql-master
@@ -22,9 +22,9 @@ services:
    volumes:
    - /data/dockerData/mysql-slave/data:/var/lib/mysql
    - /etc/localtime:/etc/localtime
+   command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
    environment:
-    MYSQL_ROOT_PASSWORD: evan1120
-    --character-set-server: utf8mb4
+    MYSQL_ROOT_PASSWORD: 123456
    ports:
    - 3308:3306
    container_name: mysql-slave

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mssql:
+    image: 'mcr.microsoft.com/mssql/server:2017-latest-ubuntu'
+    restart: always
+    hostname: 'mssql'
+    container_name: mssql
+    ports:
+      - '1433:1433'
+    volumes:
+      - '~/dockerData/mssql:/var/opt/mssql'
+    environment:
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Developer
+

@@ -5,8 +5,8 @@ services:
    image: portainer/portainer
    volumes:
    - /var/run/docker.sock:/var/run/docker.sock
+   - /etc/timezone:/etc/timezone
    - /etc/localtime:/etc/localtime
    ports:
    - 9999:9000
    container_name: portainer
-   mem_limit: 3g

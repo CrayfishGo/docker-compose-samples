@@ -11,4 +11,6 @@ services:
       - '~/dockerData/jenkins-data:/var/jenkins_home'
       - '~:/home'
       - '/var/run/docker.sock:/var/run/docker.sock'
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
     user: root

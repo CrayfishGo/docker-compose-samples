@@ -1,0 +1,17 @@
+version: '2'
+services:
+ artemis-mq:
+   restart: always
+   image: vromero/activemq-artemis
+   volumes:
+     - ~/dockerData/artemis/data:/var/lib/artemis/data
+     - /etc/timezone:/etc/timezone
+     - /etc/localtime:/etc/localtime
+   environment: 
+    - ARTEMIS_USERNAME=admin
+    - ARTEMIS_PASSWORD=admin
+   ports:
+     - "8161:8161"
+     - "61616:61616"
+   container_name: artemis-mq
+

@@ -5,6 +5,7 @@ services:
    image: daocloud.io/library/mongo:3.2.4
    volumes:
    - /data/dockerData/o2o-mongodb:/data/db
+   - /etc/timezone:/etc/timezone
    - /etc/localtime:/etc/localtime
    ports:
    - 27017:27017

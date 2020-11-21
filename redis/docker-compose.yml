@@ -6,6 +6,7 @@ services:
    image: evan1120/redis
    volumes:
    - ~/dockerData/redis/data:/data
+   - /etc/timezone:/etc/timezone
    - /etc/localtime:/etc/localtime
    ports:
    - 6379:6379

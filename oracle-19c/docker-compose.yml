@@ -1,0 +1,17 @@
+version: '2'
+services:
+ oracle-19c-ee:
+   restart: always
+   image: oracle/database:19.3.0-ee
+   volumes:
+     - ~/dockerData/oracle-19c/data:/opt/oracle/oradata
+     - /etc/timezone:/etc/timezone
+     - /etc/localtime:/etc/localtime
+   env_file:
+     - conf/ora.conf
+   ports:
+     - "1521:1521"
+     - "5500:5500"
+   container_name: oracle-19c-ee
+
+

@@ -13,10 +13,12 @@ services:
       - '~/dockerData/gitlab-ee/config:/etc/gitlab'
       - '~/dockerData/gitlab-ee/logs:/var/log/gitlab'
       - '~/dockerData/gitlab-ee/data:/var/opt/gitlab'
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://myGitlab.com:9090'
-        gitlab_rails['gitlab_host'] = "myGitlab.com"
+        external_url 'http://mygitlab.com:9090'
+        gitlab_rails['gitlab_host'] = "mygitlab.com"
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
         gitlab_rails['gitlab_default_can_create_group'] = false
         gitlab_rails['gitlab_email_enabled'] = true

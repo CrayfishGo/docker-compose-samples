@@ -6,6 +6,7 @@ services:
    image: evan1120/mysql-master
    volumes:
    - /data/dockerData/mysql-master/data:/var/lib/mysql
+   - /etc/timezone:/etc/timezone
    - /etc/localtime:/etc/localtime
    command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
    environment:
@@ -21,6 +22,7 @@ services:
    image: evan1120/mysql-slave
    volumes:
    - /data/dockerData/mysql-slave/data:/var/lib/mysql
+   - /etc/timezone:/etc/timezone
    - /etc/localtime:/etc/localtime
    command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
    environment:

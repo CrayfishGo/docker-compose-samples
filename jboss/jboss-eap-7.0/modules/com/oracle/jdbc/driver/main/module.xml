@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module xmlns="urn:jboss:module:1.1" name="com.oracle.jdbc.driver">
+
+	<resources>
+		<resource-root path="ojdbc8.jar"/><!-- Version changed from 12.2.0.1.0 to 19.11.0.0.0 ref: CVBLSPC-14052 -->
+	</resources>
+	
+	<dependencies>
+		<module name="javax.api"/>
+		<module name="javax.transaction.api"/>
+		<module name="javax.servlet.api" optional="true"/>
+	</dependencies>
+</module>

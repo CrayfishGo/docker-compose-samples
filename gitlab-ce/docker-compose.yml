@@ -1,0 +1,38 @@
+version: '3'
+services:
+  gitlab-ce:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab'
+    container_name: gitlab-ce
+    ports:
+      - '9090:9090'
+      - '2224:22'
+      - '443:443'
+    volumes:
+      - '~/dockerData/gitlab-ce/config:/etc/gitlab'
+      - '~/dockerData/gitlab-ce/logs:/var/log/gitlab'
+      - '~/dockerData/gitlab-ce/data:/var/opt/gitlab'
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://mygitlab.com:9090'
+        gitlab_rails['initial_root_password']="admin@@123"
+        gitlab_rails['gitlab_host'] = "mygitlab.com"
+        gitlab_rails['gitlab_shell_ssh_port'] = 2224
+        gitlab_rails['gitlab_default_can_create_group'] = false
+        gitlab_rails['gitlab_email_enabled'] = true
+        gitlab_rails['gitlab_email_from'] = 'git@example.com'
+        gitlab_rails['gitlab_email_display_name'] = 'Gitlab'
+        gitlab_rails['smtp_enable'] = true
+        gitlab_rails['smtp_address'] = "smtp.server.com"
+        gitlab_rails['smtp_port'] = 25
+        gitlab_rails['smtp_user_name'] = "git@example.com"
+        gitlab_rails['smtp_password'] = "password"
+        gitlab_rails['smtp_domain'] = "example.com"
+        gitlab_rails['smtp_authentication'] = "login"
+        gitlab_rails['smtp_enable_starttls_auto'] = true
+        gitlab_rails['smtp_openssl_verify_mode'] = 'none'
+        gitlab_rails['gitlab_email_reply_to'] = 'noreply@example.com'
+        gitlab_rails['gitlab_repository_downloads_path'] = 'tmp/repositories'

@@ -1,0 +1,31 @@
+version: "2.2"
+services:
+  redis-m:
+    image: redis:6.2.12
+    container_name: redis-m
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6379:6379"
+      - "16379:16379"   #集群总线端口 默认就是redis端口加1000，每个节点都要打开
+    volumes:
+      - ./redis-m/redis.conf:/redis.conf
+      - ./redis-m/data:/data
+    command: redis-server /redis.conf
+
+  redis-s:
+    image: redis:6.2.12
+    container_name: redis-s
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6380:6380"
+      - "16380:16380"   #集群总线端口 默认就是redis端口加1000，每个节点都要打开
+    volumes:
+      - ./redis-s/redis.conf:/redis.conf
+      - ./redis-s/data:/data
+    command: redis-server /redis.conf
+
+  # docker run -dti -p 6379:6379 -p 16379:16379 --restart=always --name redis_master -v ./redis-1/data:/data -v ./redis-1/redis.conf/redis.conf:/etc/redis/redis.conf -d redis:6.2.12 redis-server /etc/redis/redis.conf

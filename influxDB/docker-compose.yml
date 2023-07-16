@@ -1,0 +1,21 @@
+version: "3"
+services:
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    environment:
+      - INFLUXDB_DB=db0
+      - INFLUXDB_ADMIN_ENABLED=true
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=123456
+    volumes:
+      - ~/workspace/influxdb/data:/var/lib/influxdb/data
+      - ~/workspace/influxdb/meta:/var/lib/indluxdb/meta
+      - ~/workspace/influxdb/wal:/var/lib/indluxdb/wal
+      - ~/workspace/influxdb/backup/bin:/home/backup
+      - ~/workspace/influxdb/backup/data:/tmp/backup/data
+      - ~/workspace/influxdb/backup/gz:/tmp/backup/gz
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "9086:8086"
+    restart: always

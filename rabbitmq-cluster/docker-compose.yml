@@ -2,7 +2,6 @@ version: '2'
 services:
   rabbit-server-1:
     restart: always
-    build: build/
     image: evan1120/rabbit-cluster
     hostname: rabbit-server-1
     environment:
@@ -13,11 +12,9 @@ services:
       - "5672:5672"
       - "15672:15672"
     container_name: rabbit-server-1
-    mem_limit: 4g
 
   rabbit-server-2:
     restart: always
-    build: build/
     image: evan1120/rabbit-cluster
     hostname: rabbit-server-2
     links:
@@ -32,11 +29,9 @@ services:
       - "5673:5672"
       - "15673:15672"
     container_name: rabbit-server-2
-    mem_limit: 4g
 
   rabbit-server-3:
     restart: always
-    build: build/
     image: evan1120/rabbit-cluster
     hostname: rabbit-server-3
     links:
@@ -51,4 +46,3 @@ services:
       - "5674:5672"
       - "15674:15672"
     container_name: rabbit-server-3
-    mem_limit: 4g

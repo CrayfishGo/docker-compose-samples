@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.1" name="com.axis">
+<resources>
+<resource-root path="axis.jar"/>
+<resource-root path="commons-discovery-0.2.jar"/>
+<resource-root path="commons-logging-1.0.4.jar"/>
+
+</resources>
+
+<dependencies>
+<module name="javax.ejb.api" export="true"/>
+<module name="javax.servlet.api" export="true"/>
+<module name="javax.xml.soap.api" export="true"/>
+<module name="javax.xml.ws.api" export="true"/>
+<module name="javax.mail.api" export="true"/>
+<module name="javax.wsdl4j.api" />
+<module name="javax.xml.rpc.api" />
+<module name="org.apache.commons.logging" />
+<module name="javax.api" />
+</dependencies>
+</module>

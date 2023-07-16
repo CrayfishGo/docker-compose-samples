@@ -1,0 +1,28 @@
+version: '3'
+services:
+  rabbitmq-slave2:
+    image: rabbitmq:3.7-management
+    container_name: rabbitmq3
+    hostname: ECS-IOT-10_190_4_142-PRD-redis03
+    restart: always
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "15671:15671"
+      - "15672:15672"
+      - "25672:25672"
+    extra_hosts:
+      - ECS-IOT-10_190_4_140-PRD-redis01:10.190.4.140
+      - ECS-IOT-10_190_4_141-PRD-redis02:10.190.4.141 
+      - ECS-IOT-10_190_4_142-PRD-redis03:10.190.4.142
+    volumes:
+      - ./lib:/var/lib/rabbitmq
+      - ./log:/var/log/rabbitmq
+      - ./rabbitmq-ram.sh:/opt/rabbitmq/rabbitmq-ram.sh 
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+      - RABBITMQ_ERLANG_COOKIE=rabbitmq_erlang_cookie
+      - RABBITMQ_NODENAME:rabbitmq1
+      - TZ=Asia/Shanghai

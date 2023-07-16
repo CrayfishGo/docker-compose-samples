@@ -1,0 +1,37 @@
+version: "2.2"
+services:
+  redis-m:
+    image: redis:6.2.12
+    container_name: redis-m
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6379:6379"
+      - "16379:16379"   #集群总线端口 默认就是redis端口加1000，每个节点都要打开
+    volumes:
+      - ./redis-m/redis.conf:/redis.conf
+      - ./redis-m/data:/data
+    command: redis-server /redis.conf
+
+  redis-s:
+    image: redis:6.2.12
+    container_name: redis-s
+    privileged: true
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - "6380:6380"
+      - "16380:16380"   #集群总线端口 默认就是redis端口加1000，每个节点都要打开
+    volumes:
+      - ./redis-s/redis.conf:/redis.conf
+      - ./redis-s/data:/data
+    command: redis-server /redis.conf
+
+  # docker run -dti -p 6379:6379 -p 16379:16379 --restart=always --name redis_master -v ./redis-1/data:/data -v ./redis-1/redis.conf/redis.conf:/etc/redis/redis.conf -d redis:6.2.12 redis-server /etc/redis/redis.conf
+
+
+  #进入redis容器
+ # docker exec -it redis-m /bin/bash
+ # 启动集群 -a 后为密码 --cluster-replicas 1 1代表1个主节点有一个备份节点
+ # redis-cli --cluster create 10.190.4.140:6379 10.190.4.141:6379 10.190.4.142:6379 10.190.4.140:6380 10.190.4.141:6380 10.190.4.142:6380 --cluster-replicas 1

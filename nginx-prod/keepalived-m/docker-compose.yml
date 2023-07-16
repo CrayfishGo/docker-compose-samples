@@ -1,0 +1,17 @@
+version: '3'
+services:
+  keepalived:
+    restart: always
+    image: osixia/keepalived
+    container_name: keepalived
+    network_mode: host
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - NET_BROADCAST
+      - NET_RAW
+    environment:
+      - TZ="Asia/Shanghai"
+    volumes:
+      - ./check_nginx.sh:/container/service/keepalived/assets/check_nginx.sh
+      - ./conf/keepalived.conf:/container/service/keepalived/assets/keepalived.conf

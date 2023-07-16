@@ -1,0 +1,27 @@
+version: '3.1'
+services:
+  redmine:
+    image: redmine:5.0.4
+    restart: always
+    volumes:
+      - ~/dockerData/redmine/data:/usr/src/redmine/files
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 8085:3000
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_PASSWORD: qJni1026CiyBUTVy
+      REDMINE_SECRET_KEY_BASE: supersecretkey
+
+  db:
+    image: mysql:5.7.40
+    restart: always
+    volumes:
+      - ~/dockerData/mysql/data:/var/lib/mysql
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    command: [--character-set-server=utf8mb4,--collation-server=utf8mb4_unicode_ci]
+    environment:
+      MYSQL_ROOT_PASSWORD: qJni1026CiyBUTVy
+      MYSQL_DATABASE: redmine
